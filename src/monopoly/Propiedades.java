@@ -98,7 +98,7 @@ public class Propiedades extends Casillas{
 				+ "\nPrecio: " + this.getPrecio()
 				+ "\nComprada?: " + this.getRespuesta());
 		if (this.getRespuesta() == "Si"){
-			System.out.println("\nDueño: jugador nro" + this.getNumJugador());
+			System.out.println("\nDueï¿½o: jugador nro" + this.getNumJugador());
 		}
 	}
 
