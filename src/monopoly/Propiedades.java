@@ -1,7 +1,6 @@
 package monopoly;
 
 public class Propiedades extends Casillas{
-
 	private boolean comprada;
 	private int numJugador;
 	private int alquiler;
@@ -22,71 +21,24 @@ public class Propiedades extends Casillas{
 		this.setRespuesta("No");
 	}
 	
-	public int Comprar(int plata, int numJugador){
+	public void comprar(Ficha jugador){
 		//en el tablero: if jugador desea comprar esta prop, y tiene plata suficiente entonces Comprar();
 		//me devuelve mi nuevo monto y setea a la prop como comprada por el jugador numero taltaltal
 		this.setComprada(true);
-		this.setNumJugador(numJugador);
-		plata= plata - this.getPrecio();
+		this.setNumJugador(jugador.getNroJugador());
+		jugador.retirarDinero(this.getPrecio());
+		jugador.comprarTituloDePropiedad(this.getNumeroCasilla());
 		this.setRespuesta("Si");
-		
-		return plata;
-		
 	}
 	
-	public int alquiler(int plata){
+	public void alquiler(Ficha[] jugadores, int index){
 		
-		plata = plata - this.getAlquiler();
-		return plata;
+		jugadores[index].retirarDinero(this.getAlquiler());
+		jugadores[numJugador].depositarDinero(this.getAlquiler());
+
 	}
 
-	private int getAlquiler() {
-		return alquiler;
-	}
 
-	private void setAlquiler(int alquiler) {
-		this.alquiler = alquiler;
-	}
-
-	private int getNumeroCasilla() {
-		return numeroCasilla;
-	}
-
-	private void setNumeroCasilla(int numeroCasilla) {
-		this.numeroCasilla = numeroCasilla;
-	}
-
-	private String getNombresResidencias() {
-		return nombresResidencias;
-	}
-
-	private void setNombresResidencias(String nombresResidencias) {
-		this.nombresResidencias = nombresResidencias;
-	}
-
-	private int getPrecio() {
-		return Precio;
-	}
-
-	private void setPrecio(int precio) {
-		Precio = precio;
-	}
-
-	private boolean isComprada() {
-		return comprada;
-	}
-
-	private void setComprada(boolean comprada) {
-		this.comprada = comprada;
-	}
-
-	private int getNumJugador() {
-		return numJugador;
-	}
-
-	private void setNumJugador(int numJugador) {
-		this.numJugador = numJugador;
-	}
 	
 	@Override
 	public void listarAtributos(){
@@ -108,5 +60,62 @@ public class Propiedades extends Casillas{
 
 	private void setRespuesta(String respuesta) {
 		this.respuesta = respuesta;
+	}
+
+	public boolean isComprada() {
+		return comprada;
+	}
+
+	public void setComprada(boolean comprada) {
+		this.comprada = comprada;
+	}
+
+	public int getNumJugador() {
+		return numJugador;
+	}
+
+	public void setNumJugador(int numJugador) {
+		this.numJugador = numJugador;
+	}
+
+	public int getAlquiler() {
+		return alquiler;
+	}
+
+	public void setAlquiler(int alquiler) {
+		this.alquiler = alquiler;
+	}
+
+	public int getNumeroCasilla() {
+		return numeroCasilla;
+	}
+
+	public void setNumeroCasilla(int numeroCasilla) {
+		this.numeroCasilla = numeroCasilla;
+	}
+
+	public String getNombresResidencias() {
+		return nombresResidencias;
+	}
+
+	public void setNombresResidencias(String nombresResidencias) {
+		this.nombresResidencias = nombresResidencias;
+	}
+	@Override
+	public String getTipo() {
+		return tipo;
+	}
+
+	@Override
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public int getPrecio() {
+		return Precio;
+	}
+
+	public void setPrecio(int precio) {
+		Precio = precio;
 	}
 }
