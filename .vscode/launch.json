@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "monopoly.Main",
+            "projectName": "monopoly_22946ca7"
+        }
+    ]
+}
