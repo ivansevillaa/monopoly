@@ -1,7 +1,5 @@
 package monopoly;
 
-import javax.swing.*;
-
 public class Tablero {
 
     private int numeroCasillas=40;
@@ -21,7 +19,7 @@ public class Tablero {
             "Libreria Roberto",
             "Iglesia San Braida",
             "Calle Shrek 3",
-            "Calle Shrek 4",
+            "Gotham City",
             "Avenida El Oso Prato",
             "Torre Osama",
             "Torre Bien Loco",
