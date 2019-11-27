@@ -117,7 +117,5 @@ public class Lista {
 	public int size(){
 		return size;
 	}
-	
-	
 
 }

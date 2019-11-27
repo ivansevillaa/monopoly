@@ -10,6 +10,7 @@ public class Ficha
     private ArrayList<Integer> tituloPropiedades = new ArrayList<Integer>();;
     private int dinero = 1500;
     private int posicionDeCasilleroActual = 0;
+    private boolean penalizacion;
     private HashMap<Integer, Integer> controlPropiedaesCompradas = new HashMap<>();
 
     public ArrayList<Integer> getTituloPropiedades() {
@@ -61,18 +62,24 @@ public class Ficha
         * */
     }
 
+    public boolean getPenalizacion() {
+        return penalizacion;
+    }
+    public void setPenalizacion(boolean penalizacion) {
+        this.penalizacion=penalizacion;
+    }
+
     public Ficha(int nroJugador) {
         this.nroJugador = nroJugador;
     }
 
     public void moverse(int casillasAMoverse) {
-        if(posicionDeCasilleroActual + casillasAMoverse > 40) {
+        if(posicionDeCasilleroActual + casillasAMoverse > 39) {
             depositarDinero(200);
+            posicionDeCasilleroActual+=casillasAMoverse-39;
+        }else{
+            posicionDeCasilleroActual+=casillasAMoverse;
         }
-        // El 20 puse porque si nomas, habria que ver bien cuantos hay que poner. Esto tiene que ver los pixeles
-        int proximaCasilla = (posicionDeCasilleroActual + casillasAMoverse) % 20;
-        posicionDeCasilleroActual = proximaCasilla;
 
-        // Y aca deberian agregar sus cosas gráficas?? supongo...
     }
 }

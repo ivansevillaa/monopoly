@@ -14,37 +14,32 @@ public class Especiales extends Casillas{
 		
 	}
 	
-	public void ejecutarMetodos(int plata, boolean turno){//recibe la plata y un boolean que dice que es el turno del jugador para el metodo carcel
+	public void ejecutarMetodos(Ficha jugador){//recibe la plata y un boolean que dice que es el turno del jugador para el metodo carcel
 		//el boolean de la carcel se puede sacar hasta que se hagan bien los metodos, tambien sacar el metodo carcel si es necesario.
 		
 		if (this.getTipo()=="Carcel"){
-			this.Carcel(turno);
+			this.Carcel(jugador);
 		}else if (this.getTipo() == "Fortuna"){
-			this.Fortuna(plata);
+			this.Fortuna(jugador);
 		}else if (this.getTipo() == "ParadaLibre"){
-			this.ParadaLibre(plata);
+			this.ParadaLibre(jugador);
 		}
 		
 	}
 	
-	public int Salida(int plata){//instanciar directamente desde tablero, cuando se haya definido que el jugador paso por la salida
+	/*public int Salida(int plata){//instanciar directamente desde tablero, cuando se haya definido que el jugador paso por la salida
 		System.out.println("Salida");
 		plata = plata+200;
 		return plata;
+	}*/
+	private void Fortuna(Ficha jugador){//hacer metodo de castigo/beneficio random
+		jugador.depositarDinero(100);
 	}
-	private int Fortuna(int plata){//hacer metodo de castigo/beneficio random
-		
-		plata= plata + 100;
-		return plata;
+	private void ParadaLibre(Ficha jugador){
+		System.out.println("Parada Libre");
 	}
-	private int ParadaLibre(int plata){
-		//ni idea que hace esto(?
-		
-		return plata;
-	}
-	private void Carcel(boolean turno ){//aca se me ocurre que los turnos sean booleanos que esten en los jugadores, y que se pregunten cada vez que terminan una accion
-		turno = false;						//que no puedan estar los dos al mismo tiempo, que al final de la ejecucion de cada jugador tenga un if que diga
-										//if turno == false entonces el otro jugador(turno true)
+	private void Carcel(Ficha jugador){//aca se me ocurre que los turnos sean booleanos que esten en los jugadores, y que se pregunten cada vez que terminan una accion
+		jugador.setPenalizacion(true);
 	}
 	
 	@Override
