@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52321207-6883-450d-9f64-38390feb506e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Ficha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Ficha.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,18 +25,6 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
@@ -54,6 +41,18 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -80,5 +79,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1320" height="162" key="GridCell.Tab.0.bottom" timestamp="1574895075301">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="162" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1574895075301" />
+    <state width="1320" height="162" key="GridCell.Tab.0.center" timestamp="1574895075299">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="162" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1574895075299" />
+    <state width="1320" height="162" key="GridCell.Tab.0.left" timestamp="1574895075297">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="162" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1574895075297" />
+    <state width="1320" height="162" key="GridCell.Tab.0.right" timestamp="1574895075300">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="162" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1574895075300" />
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1574895053345">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1574895053345" />
   </component>
 </project>

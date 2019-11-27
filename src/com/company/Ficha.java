@@ -46,18 +46,11 @@ public class Ficha {
 
     public void comprarTituloDePropiedad(int numeroCasilla) {
         if (controlPropiedaesCompradas.containsKey(numeroCasilla)) {
-            System.out.println("Esta propiedades ya esta comrpada");
+            System.out.println("Esta propiedad ya esta comprada");
         } else {
             tituloPropiedades.add(this.getPosicionDeCasilleroActual());
             controlPropiedaesCompradas.put(numeroCasilla, this.getNroJugador());
         }
-    }
-
-    public Ficha(int coordenadaX, int coordenadaY, int ancho, int alto) {
-        /*
-        * Aca deberian setear el tablero con la ficha. Supongo, no sé la verdad.
-        *
-        * */
     }
 
     public Ficha(int nroJugador) {
@@ -67,11 +60,9 @@ public class Ficha {
     public void moverse(int casillasAMoverse) {
         if(posicionDeCasilleroActual + casillasAMoverse > 40) {
             depositarDinero(200);
+            posicionDeCasilleroActual += casillasAMoverse - 40;
+        } else {
+            posicionDeCasilleroActual += casillasAMoverse;
         }
-        // El 20 puse porque si nomas, habria que ver bien cuantos hay que poner. Esto tiene que ver los pixeles
-        int proximaCasilla = (posicionDeCasilleroActual + casillasAMoverse) % 20;
-        posicionDeCasilleroActual = proximaCasilla;
-
-        // Y aca deberian agregar sus cosas gráficas?? supongo...
     }
 }
