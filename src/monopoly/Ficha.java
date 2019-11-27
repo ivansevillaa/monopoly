@@ -1,10 +1,11 @@
-package com.company;
+package monopoly;
 
-import javax.swing.text.html.parser.Entity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Ficha {
+public class Ficha 
+{
     private int nroJugador;
     private ArrayList<Integer> tituloPropiedades = new ArrayList<Integer>();;
     private int dinero = 1500;
