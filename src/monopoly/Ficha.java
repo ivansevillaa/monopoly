@@ -48,7 +48,7 @@ public class Ficha
 
     public void comprarTituloDePropiedad(int numeroCasilla) {
         if (controlPropiedaesCompradas.containsKey(numeroCasilla)) {
-            System.out.println("Esta propiedades ya esta comrpada");
+            System.out.println("Esta propiedad ya esta comprada");
         } else {
             tituloPropiedades.add(this.getPosicionDeCasilleroActual());
             controlPropiedaesCompradas.put(numeroCasilla, this.getNroJugador());
@@ -80,6 +80,5 @@ public class Ficha
         }else{
             posicionDeCasilleroActual+=casillasAMoverse;
         }
-
     }
 }
