@@ -2,7 +2,7 @@ package monopoly;
 
 public class Tablero {
 
-    private int numeroCasillas=40;
+    private int numeroCasillas=20;
     private Ficha jugadores[] = new Ficha[2];
     private Lista listaCasillas=new Lista();
     private String[] nombresResidencias = {
@@ -113,11 +113,11 @@ public class Tablero {
             if (x==0){
                 listaCasillas.agregar(null,0,0,"Salida",x);
             }
-            else if (x==2 || x==7 || x==17 || x== 22 || x==33 || x==36){
+            else if (x==2 || x==7 || x==17){
                 listaCasillas.agregar(null,0,0,"Fortuna",x);
-            }else if(x==10 || x==20){
+            }else if(x==10){
                 listaCasillas.agregar(null,0,0,"ParadaLibre",x);
-            }else if(x==30){
+            }else if(x==12){
                 listaCasillas.agregar(null,0,0,"Carcel",x);
             }else{
                 listaCasillas.agregar(nombresResidencias[numRes],preciosResidencias[numRes],alquilerResidencias[numRes],"Propiedad",x);
@@ -128,7 +128,7 @@ public class Tablero {
     public void tirarDado(){
         if (jugadores[turnoDe].getPenalizacion()==false){
             int valor;
-            valor=(int)Math.random() * (13 - 1) + 1;
+            valor=(int)Math.random() * (7 - 1) + 1;
             jugadores[turnoDe].moverse(valor);
             Casillas casillaActual = listaCasillas.obtener(jugadores[turnoDe].getPosicionDeCasilleroActual());
             if (casillaActual.getClass().getSimpleName().equals("Especiales")){
