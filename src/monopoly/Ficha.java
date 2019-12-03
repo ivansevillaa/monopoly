@@ -12,6 +12,7 @@ public class Ficha
     private int posicionDeCasilleroActual = 0;
     private boolean penalizacion;
     private HashMap<Integer, Integer> controlPropiedaesCompradas = new HashMap<>();
+    private boolean turno;
 
     public ArrayList<Integer> getTituloPropiedades() {
         return tituloPropiedades;
@@ -79,6 +80,22 @@ public class Ficha
             posicionDeCasilleroActual+=casillasAMoverse-39;
         }else{
             posicionDeCasilleroActual+=casillasAMoverse;
+        }
+    }
+
+    public void pagarCarcel() {
+        retirarDinero(1000);
+        setPenalizacion(true);
+    }
+
+    public void generarFortuna() {
+        int azar = (Math.random() * ((10 - 1) + 1)) + 1;
+        if (azar >= 1 && azar < 3) {
+            retirarDinero(200);
+        } else if(azar >= 3 && azar < 6) {
+            depositarDinero(700);
+        } else {
+            retirarDinero(600);
         }
     }
 }
