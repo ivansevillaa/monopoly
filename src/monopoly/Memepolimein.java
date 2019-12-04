@@ -44,7 +44,7 @@ public class Memepolimein extends JFrame
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.BLACK);
         rightPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-        rightPanel.setBounds(634, 6, 419, 600);
+        rightPanel.setBounds(640, 6, 419, 600);
         contentIncluder.add(rightPanel);
         rightPanel.setLayout(null);
 

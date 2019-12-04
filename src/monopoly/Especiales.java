@@ -4,8 +4,12 @@ public class Especiales extends Cuadrantes{
 
 	private int numeroCasilla;
 	private String tipo;
+
+	public Especiales(int xCoord, int yCoord, int width, int height, String labelString, int rotacionGrado) {
+		super(xCoord, yCoord, width, height, labelString, rotacionGrado);
+	}
 	
-	
+	/*
 	public Especiales(String tipo, int numero) {
 		
 		super(numero);
@@ -31,7 +35,7 @@ public class Especiales extends Cuadrantes{
 		System.out.println("Salida");
 		plata = plata+200;
 		return plata;
-	}*/
+	}
 	private void Fortuna(Ficha jugador){//hacer metodo de castigo/beneficio random
 		jugador.depositarDinero(100);
 	}
@@ -50,7 +54,7 @@ public class Especiales extends Cuadrantes{
 				+ "\n Numero de la siguiente casilla: " + this.siguiente.getNum());
 	}
 	
-
+*/
 	
 
 }

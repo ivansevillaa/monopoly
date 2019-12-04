@@ -9,7 +9,12 @@ public class Propiedades extends Cuadrantes{
 	private String tipo;
 	private int Precio;
 	private String respuesta;
-	
+
+	public Propiedades(int xCoord, int yCoord, int width, int height, String labelString, int rotacionGrado) {
+		super(xCoord, yCoord, width, height, labelString, rotacionGrado);
+	}
+
+	/*
 	public Propiedades(String nombresResidencias,int precio, int alquiler, int numero, String tipo){
 		super(numero);
 		this.setNumeroCasilla(numero);
@@ -20,7 +25,7 @@ public class Propiedades extends Cuadrantes{
 		this.setTipo(tipo);
 		this.setRespuesta("No");
 	}
-	
+	*/
 	public void comprar(Ficha jugador){
 		//en el tablero: if jugador desea comprar esta prop, y tiene plata suficiente entonces Comprar();
 		//me devuelve mi nuevo monto y setea a la prop como comprada por el jugador numero taltaltal
@@ -40,7 +45,7 @@ public class Propiedades extends Cuadrantes{
 
 
 	
-	@Override
+	/*@Override
 	public void listarAtributos(){
 		System.out.println("\n\nCASILLA DE PROPIEDAD: ");
 		System.out.println("\nTipo: " + this.getTipo()
@@ -52,7 +57,7 @@ public class Propiedades extends Cuadrantes{
 		if (this.getRespuesta() == "Si"){
 			System.out.println("\nDue�o: jugador nro" + this.getNumJugador());
 		}
-	}
+	}*/
 
 	private String getRespuesta() {
 		return respuesta;
@@ -101,15 +106,7 @@ public class Propiedades extends Cuadrantes{
 	public void setNombresResidencias(String nombresResidencias) {
 		this.nombresResidencias = nombresResidencias;
 	}
-	@Override
-	public String getTipo() {
-		return tipo;
-	}
 
-	@Override
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 
 	public int getPrecio() {
 		return Precio;
