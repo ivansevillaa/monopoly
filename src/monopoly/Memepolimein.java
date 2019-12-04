@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Memepolimein extends JFrame
 {
@@ -15,9 +16,14 @@ public class Memepolimein extends JFrame
     JButton btnRollDadin;
     JButton btnPagarRnt;
     JButton btnPagar;
-    JTextArea panelPlayer1TextArea;
-    JTextArea panelPlayer2TextArea;
+  /*  JTextArea panelPlayer1TextArea;
+    JTextArea panelPlayer2TextArea;*/
     Tablero Tableroenjuego;
+    final static int juegoON = 1;
+    ArrayList<Ficha> jugadorenae = new ArrayList<>();
+    Ficha jugador01;
+    Ficha jugador02;
+
 
 
 
@@ -60,8 +66,16 @@ public class Memepolimein extends JFrame
         rightPanel.add(btnPagarRnt);
         btnPagarRnt.setEnabled(false);
 
+        jugador01 = new Ficha(1, Color.BLACK);
+        jugadorenae.add(jugador01);
+        layeredPane.add(jugador01, new Integer(1));
 
-    }
+        jugador02 = new Ficha(2, Color.PINK);
+        jugadorenae.add(jugador02);
+        layeredPane.add(jugador02, new Integer(2));
+
+
+}
 
     public static void main(String[] args)
     {

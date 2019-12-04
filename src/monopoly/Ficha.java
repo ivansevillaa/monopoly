@@ -1,18 +1,45 @@
 package monopoly;
 
 
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Ficha 
+public class Ficha extends JPanel
 {
-    private int nroJugador;
-    private ArrayList<Integer> tituloPropiedades = new ArrayList<Integer>();;
+
+    private ArrayList<Integer> tituloPropiedades = new ArrayList<Integer>();
     private int dinero = 1500;
     private int posicionDeCasilleroActual = 0;
     private boolean penalizacion;
     private HashMap<Integer, Integer> controlPropiedaesCompradas = new HashMap<>();
     private boolean turno;
+    private int Numerojug=0;
+    JLabel lbNumerojug;
+
+    int[] jugador01x = {31, 131, 231, 331, 431, 531,
+            531, 531, 531, 531, 531,
+            431, 331, 231, 131, 31,
+            31, 31, 31, 31};
+
+    int[] jugador01y = {33, 33, 33, 33, 33, 33,
+            133, 233, 333, 433, 533,
+            533, 533, 533, 533, 533,
+            433, 333, 233, 133};
+
+    int[] jugador02x = {61, 191, 291, 361, 461, 561,
+            561, 561, 561, 561, 561,
+            461, 361, 261, 161, 61,
+            61, 61, 61, 61};
+
+    int[] jugador02y = {33, 33, 33, 33, 33, 33,
+            133, 233, 333, 433, 533,
+            533, 533, 533, 533, 533,
+            433, 333, 233, 133};
+
+
 
     public ArrayList<Integer> getTituloPropiedades() {
         return tituloPropiedades;
@@ -40,7 +67,7 @@ public class Ficha
     }
 
     public int getNroJugador() {
-        return nroJugador;
+        return Numerojug;
     }
 
     public boolean conTituloDePropiedades(int numeroCasilla) {
@@ -56,11 +83,22 @@ public class Ficha
         }
     }
 
-    public Ficha(int coordenadaX, int coordenadaY, int ancho, int alto) {
-        /*
-        * Aca deberian setear el tablero con la ficha. Supongo, no sé la verdad.
-        *
-        * */
+    public Ficha(int xCoord, int yCoord, int width, int height) {
+        setBorder(new LineBorder(new Color(0, 0, 0)));
+        setBounds(xCoord, yCoord, 20, 20);
+        this.setLayout(null);
+    }
+
+    public Ficha(int Numerojugarode, Color color) {
+        // TODO Auto-generated constructor stub
+        this.Numerojug = Numerojugarode;
+        this.setBackground(color);
+        lbNumerojug = new JLabel(""+Numerojugarode);
+        lbNumerojug .setFont(new Font("Arial Grande", Font.BOLD, 15));
+        lbNumerojug .setForeground(Color.WHITE);
+        this.add(lbNumerojug );
+        this.setBounds(Numerojugarode*30, 33, 20, 28);
+        Numerojug++;
     }
 
     public boolean getPenalizacion() {
@@ -71,20 +109,34 @@ public class Ficha
     }
 
     public Ficha(int nroJugador) {
-        this.nroJugador = nroJugador;
+        this.Numerojug = nroJugador;
     }
 
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }
+
+
     public void moverse(int casillasAMoverse) {
-        if(posicionDeCasilleroActual + casillasAMoverse > 39) {
+        if (posicionDeCasilleroActual + casillasAMoverse > 19) {
             depositarDinero(200);
-            posicionDeCasilleroActual+=casillasAMoverse-39;
-        }else{
-            posicionDeCasilleroActual+=casillasAMoverse;
+
+            int objetivo = (posicionDeCasilleroActual + casillasAMoverse);
+
+            if (Memepolimein.juegoON == 1) {
+
+                this.setLocation(jugador01x[objetivo], jugador01y[objetivo]);
+
+            } else {
+
+                this.setLocation(jugador02x[objetivo], jugador02y[objetivo]);
+
+            }
         }
     }
 
     public void pagarCarcel() {
-        retirarDinero(1000);
+        retirarDinero(100);
         setPenalizacion(true);
     }
 
