@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class Ficha extends JPanel
 {
 
@@ -15,6 +16,7 @@ public class Ficha extends JPanel
     private int posicionDeCasilleroActual = 0;
     private boolean penalizacion;
     private HashMap<Integer, Integer> controlPropiedaesCompradas = new HashMap<>();
+    static HashMap<Integer, Integer> Filmina = new HashMap<>();
     private boolean turno;
     private int Numerojug=0;
     JLabel lbNumerojug;
@@ -74,6 +76,15 @@ public class Ficha extends JPanel
         return tituloPropiedades.contains(numeroCasilla) ? true : false;
     }
 
+    public void PagarDeuda(int deuda) {
+        if(deuda > dinero) {
+            setVisible(false);
+            System.out.println("El Jugador "+ Numerojug + " Quedo en banca rota!");
+        } else {
+            dinero -= deuda;
+        }
+    }
+
     public void comprarTituloDePropiedad(int numeroCasilla) {
         if (controlPropiedaesCompradas.containsKey(numeroCasilla)) {
             System.out.println("Esta propiedad ya esta comprada");
@@ -89,15 +100,16 @@ public class Ficha extends JPanel
         this.setLayout(null);
     }
 
-    public Ficha(int Numerojugarode, Color color) {
-        // TODO Auto-generated constructor stub
+    public Ficha(int Numerojugarode, Color color)
+    {
+
         this.Numerojug = Numerojugarode;
         this.setBackground(color);
         lbNumerojug = new JLabel(""+Numerojugarode);
         lbNumerojug .setFont(new Font("Arial Grande", Font.BOLD, 15));
         lbNumerojug .setForeground(Color.WHITE);
         this.add(lbNumerojug );
-        this.setBounds(Numerojugarode*30, 33, 20, 28);
+        this.setBounds(Numerojugarode*30, 33, 30, 28);
         Numerojug++;
     }
 
@@ -117,7 +129,8 @@ public class Ficha extends JPanel
     }
 
 
-    public void moverse(int casillasAMoverse) {
+    public void moverse(int casillasAMoverse)
+    {
         if (posicionDeCasilleroActual + casillasAMoverse > 19) {
             depositarDinero(200);
 
@@ -127,6 +140,7 @@ public class Ficha extends JPanel
 
                 this.setLocation(jugador01x[objetivo], jugador01y[objetivo]);
 
+
             } else {
 
                 this.setLocation(jugador02x[objetivo], jugador02y[objetivo]);
@@ -135,7 +149,8 @@ public class Ficha extends JPanel
         }
     }
 
-    public void pagarCarcel() {
+    public void pagarCarcel(Ficha ficha)
+    {
         retirarDinero(100);
         setPenalizacion(true);
     }

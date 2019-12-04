@@ -1,11 +1,16 @@
 package monopoly;
 
- class Dado {
+import java.util.Random;
 
-     public int tirarDados(){
+class Dado {
 
-         return (int) (Math.random()*11);
+     Random dado = new Random();
+     int cara=0;
 
+     public int tirarDados()
+     {
+         cara = dado.nextInt(6)+1;
+         return cara;
      }
 
 
