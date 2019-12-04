@@ -89,7 +89,7 @@ public class Ficha
     }
 
     public void generarFortuna() {
-        int azar = (Math.random() * ((10 - 1) + 1)) + 1;
+        int azar = (int) ((Math.random() * ((10 - 1) + 1)) + 1);
         if (azar >= 1 && azar < 3) {
             retirarDinero(200);
         } else if(azar >= 3 && azar < 6) {

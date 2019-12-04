@@ -1,6 +1,6 @@
 package monopoly;
 
-public class Especiales extends Casillas{
+public class Especiales extends Cuadrantes{
 
 	private int numeroCasilla;
 	private String tipo;

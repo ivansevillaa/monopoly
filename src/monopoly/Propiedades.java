@@ -1,6 +1,6 @@
 package monopoly;
 
-public class Propiedades extends Casillas{
+public class Propiedades extends Cuadrantes{
 	private boolean comprada;
 	private int numJugador;
 	private int alquiler;
