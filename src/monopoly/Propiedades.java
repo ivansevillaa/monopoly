@@ -30,7 +30,7 @@ public class Propiedades extends Cuadrantes{
 		//en el tablero: if jugador desea comprar esta prop, y tiene plata suficiente entonces Comprar();
 		//me devuelve mi nuevo monto y setea a la prop como comprada por el jugador numero taltaltal
 		this.setComprada(true);
-		this.setNumJugador(jugador.getNroJugador());
+		this.setNumJugador(jugador.getNumerojug());
 		jugador.retirarDinero(this.getPrecio());
 		jugador.comprarTituloDePropiedad(this.getNumeroCasilla());
 		this.setRespuesta("Si");

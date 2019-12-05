@@ -4,9 +4,13 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import monopoly.Ficha;
+import monopoly.Dado;
+import monopoly.Tablero;
 
 public class Memepolimein extends JFrame
 {
@@ -17,7 +21,7 @@ public class Memepolimein extends JFrame
     JButton btnNextTurno;
     JButton btnRollDadin;
     JButton btnPagarRnt;
-    JButton btnPagar;
+    JButton btnComprar;
   /*  JTextArea panelPlayer1TextArea;
     JTextArea panelPlayer2TextArea;*/
     Tablero Tableroenjuego;
@@ -28,7 +32,9 @@ public class Memepolimein extends JFrame
     boolean turnoPlayer1 = false;
     boolean turnoPlayer2 = false;
     CardLayout c1 = new CardLayout();
-    Dado dado = new Dado();
+    Boolean doubleDiceForPlayer1 = false;
+    Boolean doubleDiceForPlayer2 = false;
+
 
 
 
@@ -60,26 +66,35 @@ public class Memepolimein extends JFrame
         contentIncluder.add(rightPanel);
         rightPanel.setLayout(null);
 
+        jugador01 = new Ficha(1, Color.BLACK);
+        jugadorenae.add(jugador01);
+        layeredPane.add(jugador01, new Integer(1));
 
-        btnPagar = new JButton("Comprar");
-        btnPagar.setBounds(81, 478, 117, 29);
-        rightPanel.add(btnPagar);
-        btnPagar.setEnabled(false);
+        jugador02 = new Ficha(2, Color.PINK);
+        jugadorenae.add(jugador02);
+        layeredPane.add(jugador02, new Integer(2));
 
-        btnPagar.addActionListener(new ActionListener() {
+
+        btnComprar = new JButton("Comprar");
+        btnComprar.addActionListener(new ActionListener()
+        {
             public void actionPerformed(ActionEvent e) {
-                //turnCounter--; // decrease because we increased at the end of the rolldice
-                Ficha currentPlayer = jugadorenae.get(juegoON);
-                infoConsole.setText("Tu pagaste "+Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getName());
-                //currentPlayer.buyTitleDeed(currentPlayer.getCurrentSquareNumber());
-                int deuda = Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getPrecio();
-                currentPlayer.PagarDeuda(deuda);
-                btnPagar.setEnabled(false);
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
-                //turnCounter++;
+
+            //turnCounter--;
+            Ficha currentPlayer = jugadorenae.get(juegoON);
+            infoConsole.setText("You bought "+Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getName());
+            currentPlayer.buyTitleDeed(currentPlayer.getPosicionDeCasilleroActual());
+            int Retirarmonto = Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getPrecio();
+            currentPlayer.Retirardinero(Retirarmonto);
+            btnComprar.setEnabled(false);
+            //updatePanelPlayer1TextArea();
+            //updatePanelPlayer2TextArea();
+            //turnCounter++;
             }
         });
+        btnComprar.setBounds(81, 478, 117, 29);
+        rightPanel.add(btnComprar);
+        btnComprar.setEnabled(false);
 
         btnPagarRnt = new JButton("Pagar renta");
 
@@ -90,12 +105,12 @@ public class Memepolimein extends JFrame
         btnPagarRnt.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
+            public void actionPerformed(ActionEvent e)
+            {
                 // turnCounter--;
                 Ficha currentPlayer = jugadorenae.get(juegoON);
                 Ficha dueñoDelCuadrante = jugadorenae.get((Ficha.Filmina.get(currentPlayer.getPosicionDeCasilleroActual()))==1?0:1);
-                infoConsole.setText("You paid to the player "+dueñoDelCuadrante.getNroJugador());
+                infoConsole.setText("You paid to the player "+dueñoDelCuadrante.getNumerojug());
 
                 int withdrawAmount = Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getRentPrecio();
                 System.out.println(withdrawAmount);
@@ -113,78 +128,51 @@ public class Memepolimein extends JFrame
 
         });
 
-        jugador01 = new Ficha(1, Color.BLACK);
-        jugadorenae.add(jugador01);
-        layeredPane.add(jugador01, new Integer(1));
 
-        jugador02 = new Ficha(2, Color.PINK);
-        jugadorenae.add(jugador02);
-        layeredPane.add(jugador02, new Integer(2));
+        Dado dado1 = new Dado(244, 406, 40, 40);
+        layeredPane.add(dado1, new Integer(1));
 
-        btnNextTurno= new JButton("Siguiente Turno");
-        btnNextTurno.setBounds(81, 519, 246, 53);
-        rightPanel.add(btnNextTurno);
-        btnNextTurno.setEnabled(false);
+        Dado dado2 = new Dado(333, 406, 40, 40);
+        layeredPane.add(dado2, new Integer(1));
 
-        btnNextTurno.addActionListener(new ActionListener() {
-
+        btnRollDadin = new JButton("Tirar Dados");
+        btnRollDadin.addActionListener(new ActionListener()
+        {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                btnRollDadin.setEnabled(true);
-                btnPagar.setEnabled(false);
-                btnPagarRnt.setEnabled(false);
-                btnNextTurno.setEnabled(false);
 
-                if(juegoON == 0 && turnoPlayer1) {
-                    juegoON = 0;
-                    turnoPlayer1 = false;
-                } else if(juegoON == 1 && turnoPlayer1) {
-                    juegoON = 1;
-                    turnoPlayer2 = false;
-                } else if(!turnoPlayer1 && !turnoPlayer2) {
-                    juegoON = (juegoON + 1) % 2;
-                }
-
-
-                c1.show(playerAssetsPanel, ""+(juegoON==0 ? 1 : 2)); // maps 0 to 1 and 1 to 2
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
-                infoConsole.setText("It's now player "+(juegoON==0 ? 1 : 2)+"'s turn!");
-            }
-
-
-
-        });
-
-        btnRollDadin = new JButton("Tirar Dado");
-        btnRollDadin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                if(juegoON == 0) {
-                    // turno del player 1
-                    jugador01.moverse(dado.tirarDados());
-                    if(Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual()) // si fue comprado x alguno
-                            && Ficha.Filmina.get(jugador01.getPosicionDeCasilleroActual()) != jugador01.getNroJugador() // no x ete
+                if (juegoON == 0) {
+                    // player1's turn
+                    int dice1OldValue = dado1.getFaceValue();
+                    int dice2OldValue = dado2.getFaceValue();
+                    dado1.tirarDados();
+                    dado2.tirarDados();
+                    int dicesTotal = dado1.getFaceValue() + dado2.getFaceValue();
+                    if (dado1.getFaceValue() == dado2.getFaceValue()) {
+                        doubleDiceForPlayer1 = true;
+                    } else {
+                        doubleDiceForPlayer1 = false;
+                    }
+                    jugador01.moverse(dicesTotal);
+                    if (Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual()) // if bought by someone
+                            && Ficha.Filmina.get(jugador01.getPosicionDeCasilleroActual()) != jugador01.getNumerojug() // not by itself
                     ) {
-                        btnPagar.setEnabled(false);
+                        btnComprar.setEnabled(false);
                         btnRollDadin.setEnabled(false);
                         btnNextTurno.setEnabled(false);
                         btnPagarRnt.setEnabled(true);
-
                     }
-                    if (Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual()) // si ta comprado
-                            && Ficha.Filmina.get(jugador01.getPosicionDeCasilleroActual()) == jugador01.getNroJugador()) { // y por el mismo
-                        btnPagar.setEnabled(false);
+                    if (Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual()) // if bought by someone
+                            && Ficha.Filmina.get(jugador01.getPosicionDeCasilleroActual()) == jugador01.getNumerojug()) { // and by itself
+                        btnComprar.setEnabled(false);
                         btnPagarRnt.setEnabled(false);
                         btnNextTurno.setEnabled(true);
-                        juegoON++;
                     }
-                    if(Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador01.getPosicionDeCasilleroActual()))) {
-                        btnPagar.setEnabled(false);
+                    if (Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador01.getPosicionDeCasilleroActual()))) {
+                        btnComprar.setEnabled(false);
                         btnNextTurno.setEnabled(true);
-                    } else if (!Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual())) { // si no ta comprado
-                        btnPagar.setEnabled(true);
+                    } else if (!Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual())) { // if not bought by someone
+                        btnComprar.setEnabled(true);
                         btnNextTurno.setEnabled(true);
                         btnPagarRnt.setEnabled(false);
                     }
@@ -192,27 +180,36 @@ public class Memepolimein extends JFrame
 
                 } else {
                     // player2's turn
-                    if(juegoON==1){
-                    jugador02.moverse(dado.tirarDados());
-                    if(Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
-                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) != jugador02.getNroJugador() // not by itself
+                    int dice1OldValue = dado1.getFaceValue();
+                    int dice2OldValue = dado2.getFaceValue();
+                    dado1.tirarDados();
+                    dado2.tirarDados();
+                    int dicesTotal = dado1.getFaceValue() + dado2.getFaceValue();
+                    if (dado1.getFaceValue() == dado2.getFaceValue()) {
+                        doubleDiceForPlayer2 = true;
+                    } else {
+                        doubleDiceForPlayer2 = false;
+                    }
+                    jugador02.moverse(dicesTotal);
+                    if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
+                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) != jugador02.getNumerojug() // not by itself
                     ) {
-                        btnPagar.setEnabled(false);
+                        btnComprar.setEnabled(false);
                         btnRollDadin.setEnabled(false);
                         btnNextTurno.setEnabled(false);
                         btnPagarRnt.setEnabled(true);
                     }
-                    if(Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
-                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) == jugador02.getNroJugador()) { // and by itself
-                        btnPagar.setEnabled(false);
+                    if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
+                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) == jugador02.getNumerojug()) { // and by itself
+                        btnComprar.setEnabled(false);
                         btnPagarRnt.setEnabled(false);
 
                     }
-                    if(Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()))) {
-                        btnPagar.setEnabled(false);
+                    if (Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()))) {
+                        btnComprar.setEnabled(false);
                         btnNextTurno.setEnabled(true);
                     } else if (!Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual())) { // if not bought by someone
-                        btnPagar.setEnabled(true);
+                        btnComprar.setEnabled(true);
                         btnNextTurno.setEnabled(true);
                         btnPagarRnt.setEnabled(false);
                     }
@@ -220,10 +217,10 @@ public class Memepolimein extends JFrame
                 }
 
                 btnRollDadin.setEnabled(false);
-                if(turnoPlayer1 ||turnoPlayer2) {
-                    infoConsole.setText("Click Next Turn to allow player "+ (juegoON==0 ? 1 : 2) +" to Roll Dice!");
+                if (doubleDiceForPlayer1 || doubleDiceForPlayer2) {
+                    infoConsole.setText("Click Next Turn to allow player " + (juegoON == 0 ? 1 : 2) + " to Roll Dice!");
                 } else {
-                    infoConsole.setText("Click Next Turn to allow player "+ (juegoON==0 ? 2 : 1) +" to Roll Dice!");
+                    infoConsole.setText("Click Next Turn to allow player " + (juegoON == 0 ? 2 : 1) + " to Roll Dice!");
                 }
 
 
@@ -231,15 +228,49 @@ public class Memepolimein extends JFrame
                 layeredPane.remove(Tableroenjuego);
                 layeredPane.add(Tableroenjuego, new Integer(0));
 
-               // updatePanelPlayer1TextArea();
-               // updatePanelPlayer2TextArea();
-                }
+                //updatePanelPlayer1TextArea();
+            //updatePanelPlayer2TextArea();
 
             }
         });
         btnRollDadin.setBounds(81, 413, 246, 53);
         rightPanel.add(btnRollDadin);
 
+
+
+        btnNextTurno = new JButton("Siguiente Turno");
+        btnNextTurno.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                btnRollDadin.setEnabled(true);
+                btnComprar.setEnabled(false);
+                btnPagarRnt.setEnabled(false);
+                btnNextTurno.setEnabled(false);
+
+                if (juegoON == 0 && doubleDiceForPlayer1) {
+                    juegoON = 0;
+                    doubleDiceForPlayer1 = false;
+                } else if (juegoON == 1 && doubleDiceForPlayer2) {
+                    juegoON = 1;
+                    doubleDiceForPlayer2 = false;
+                } else if (!doubleDiceForPlayer1 && !doubleDiceForPlayer2) {
+                    juegoON = (juegoON + 1) % 2;
+                }
+
+
+                c1.show(playerAssetsPanel, "" + (juegoON == 0 ? 1 : 2)); // maps 0 to 1 and 1 to 2
+                //updatePanelPlayer1TextArea();
+                //updatePanelPlayer2TextArea();
+                infoConsole.setText("It's now player "+(juegoON==0 ? 1 : 2)+"'s turn!");
+            }
+
+        });
+
+        btnNextTurno.setBounds(81, 519, 246, 53);
+        rightPanel.add(btnNextTurno);
+        btnNextTurno.setEnabled(false);
 
 }
 
