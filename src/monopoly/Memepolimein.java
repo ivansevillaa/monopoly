@@ -28,6 +28,7 @@ public class Memepolimein extends JFrame
     CardLayout cart = new CardLayout();
     Boolean Dadoparajugador01 = false;
     Boolean Dadoparajugador02 = false;
+    JPanel testeador;
 
 
     public Memepolimein()
@@ -56,6 +57,11 @@ public class Memepolimein extends JFrame
         rightPanel.setBounds(640, 6, 419, 600);
         contentIncluder.add(rightPanel);
         rightPanel.setLayout(null);
+
+        JPanel testeador = new JPanel();
+        testeador.setBounds(81, 312, 246, 68);
+        rightPanel.add(testeador);
+        testeador.setLayout(null);
 
         jugador01 = new Ficha(1, Color.BLACK);
         jugadorenae.add(jugador01);
@@ -101,7 +107,7 @@ public class Memepolimein extends JFrame
                 // turnCounter--;
                 Ficha currentPlayer = jugadorenae.get(juegoON);
                 Ficha dueñoDelCuadrante = jugadorenae.get((Ficha.Filmina.get(currentPlayer.getPosicionDeCasilleroActual()))==1?0:1);
-                infoConsole.setText("You paid to the player "+dueñoDelCuadrante.getNumerojug());
+                infoConsole.setText("pagaste al jugador "+dueñoDelCuadrante.getNumerojug());
 
                 int withdrawAmount = Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getRentPrecio();
                 System.out.println(withdrawAmount);
@@ -133,7 +139,7 @@ public class Memepolimein extends JFrame
             public void actionPerformed(ActionEvent e) {
 
                 if (juegoON == 0) {
-                    // player1's turn
+                    // turno del player 1
                     int dice1OldValue = dado1.getValorcara();
                     int dice2OldValue = dado2.getValorcara();
                     dado1.tirarDados();
@@ -170,7 +176,7 @@ public class Memepolimein extends JFrame
 
 
                 } else {
-                    // player2's turn
+                    // turno del player 2
                     int dice1OldValue = dado1.getValorcara();
                     int dice2OldValue = dado2.getValorcara();
                     dado1.tirarDados();
@@ -215,7 +221,7 @@ public class Memepolimein extends JFrame
                 }
 
 
-                // we have to add below 2 lines to avoid some GUI breakdowns.
+
                 layeredPane.remove(Tableroenjuego);
                 layeredPane.add(Tableroenjuego, new Integer(0));
 
@@ -257,13 +263,25 @@ public class Memepolimein extends JFrame
                 infoConsole.setText("Ahora es "+(juegoON==0 ? 1 : 2)+"tomara su turno");
             }
 
-        });
 
+        });
         btnNextTurno.setBounds(81, 519, 246, 53);
         rightPanel.add(btnNextTurno);
         btnNextTurno.setEnabled(false);
 
-}
+        infoConsole = new JTextArea();
+        infoConsole.setColumns(20);
+        infoConsole.setRows(5);
+        infoConsole.setBounds(6, 6, 234, 56);
+        testeador.add(infoConsole);
+        infoConsole.setLineWrap(true);
+        infoConsole.setText("Jugador 1 tire los dados");
+
+
+
+
+    }
+
 
     public static void main(String[] args)
     {
