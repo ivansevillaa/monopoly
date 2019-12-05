@@ -257,7 +257,7 @@ public class Memepolimein extends JFrame
                 }
 
 
-                cart.show(Paneldeljugador, "" + (juegoON == 0 ? 1 : 2));
+                //cart.show(Paneldeljugador, "" + (juegoON == 0 ? 1 : 2));
                 //updatePanelPlayer1TextArea();
                 //updatePanelPlayer2TextArea();
                 infoConsole.setText("Ahora es "+(juegoON==0 ? 1 : 2)+"tomara su turno");
