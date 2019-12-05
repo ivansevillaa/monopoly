@@ -36,25 +36,25 @@ public class Tablero extends JPanel
 
         String[] NombreCuadran =
                 {
-                        "Avenida Artrosis",
+                        "Salida",
                         "Avenida Gastritis",
-                        "Edificio Globant",
+                        "Estacionamiento libre",
                         "UTN",
                         "Calle Shrek",
                         "CARCEL",
                         "Plaza Springboot",
-                        "Avenida Walter White",
+                        "Estacionamiento libre",
                         "Maxikiosco 'EL ESCOCES'",
                         "Libreria Roberto",
                         "CARCEL 2.0",
                         "Gotham City",
-                        "Maxikiosco de Seba",
+                        "Estacionamiento libre",
                         "Club Nocturno LIV",
                         "Plaza ZinjaI",
                         "FORTUNA",
                         "Avenida El Bromas",
                         "Calle Probabilidades Thales",
-                        "Puente Resistencia-Vilelas",
+                        "Estacionamiento libre",
                         "La casa del alfajor"
                 };
 
