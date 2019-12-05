@@ -151,6 +151,13 @@ public class Memepolimein extends JFrame
                         Dadoparajugador01 = false;
                     }
                     jugador01.moverse(dicesTotal);
+                    if(jugador01.getPosicionDeCasilleroActual()==6||jugador01.getPosicionDeCasilleroActual()==11){
+                        jugador01.pagarCarcel(jugador01);
+                    }
+                    if(jugador01.getPosicionDeCasilleroActual()==16){
+                        jugador01.generarFortuna();
+                    }
+
                     if (Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual()) // if bought by someone
                             && Ficha.Filmina.get(jugador01.getPosicionDeCasilleroActual()) != jugador01.getNumerojug() // not by itself
                     ) {
@@ -188,6 +195,12 @@ public class Memepolimein extends JFrame
                         Dadoparajugador02 = false;
                     }
                     jugador02.moverse(dicesTotal);
+                    if(jugador02.getPosicionDeCasilleroActual()==6||jugador02.getPosicionDeCasilleroActual()==11){
+                        jugador02.pagarCarcel(jugador02);
+                    }
+                    if(jugador01.getPosicionDeCasilleroActual()==16){
+                        jugador01.generarFortuna();
+                    }
                     if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
                             && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) != jugador02.getNumerojug() // not by itself
                     ) {

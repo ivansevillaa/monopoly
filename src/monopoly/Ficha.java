@@ -171,6 +171,7 @@ public class Ficha extends JPanel
             int objetivo = (PosicionDeCasilleroActual + dicesTotal) % 20;
             PosicionDeCasilleroActual= objetivo;
 
+
             if (Memepolimein.juegoON == 0) {
 
                 this.setLocation(jugadorx01[objetivo], jugadory01[objetivo]);
