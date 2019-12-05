@@ -92,7 +92,6 @@ public class Tablero extends JPanel
         Cuadrantes cuadro06 = new Cuadrantes(506,106,100,100,NombreCuadran[6],-90);
         this.add(cuadro06);
         allCuadrantes.add(cuadro06);
-        Cuadrantesincomprables.add(cuadro06);
 
         Cuadrantes cuadro07 = new Cuadrantes(506,206,100,100,NombreCuadran[7],-90);
         this.add(cuadro07);
@@ -117,7 +116,6 @@ public class Tablero extends JPanel
         Cuadrantes cuadro11 = new Cuadrantes(406,506,100,100,NombreCuadran[11],0);
         this.add(cuadro11);
         allCuadrantes.add(cuadro11);
-        Cuadrantesincomprables.add(cuadro11);
 
         Cuadrantes cuadro12 = new Cuadrantes(306,506,100,100,NombreCuadran[12],0);
         this.add(cuadro12);
@@ -142,7 +140,6 @@ public class Tablero extends JPanel
         Cuadrantes cuadro16 = new Cuadrantes(6,406,100,100,NombreCuadran[16],90);
         this.add(cuadro16);
         allCuadrantes.add(cuadro16);
-        Cuadrantesincomprables.add(cuadro16);
 
         Cuadrantes cuadro17 = new Cuadrantes(6,306,100,100,NombreCuadran[17],90);
         this.add(cuadro17);
