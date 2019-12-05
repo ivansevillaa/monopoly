@@ -18,7 +18,6 @@ public class Ficha extends JPanel
     private boolean turno;
     JLabel lbNumerojug;
     private int Numerojug;
-    JLabel lblPlayerNumber;
     static int totalPlayers = 0; // we might need this number later on
 
 
@@ -79,33 +78,13 @@ public class Ficha extends JPanel
     public Ficha(int Numerojug, Color color) {
         this.Numerojug = Numerojug;
         this.setBackground(color);
-        lblPlayerNumber = new JLabel(""+ Numerojug);
-        lblPlayerNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-        lblPlayerNumber.setForeground(Color.WHITE);
-        this.add(lblPlayerNumber);
+        lbNumerojug = new JLabel(""+ Numerojug);
+        lbNumerojug.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+        lbNumerojug.setForeground(Color.WHITE);
+        this.add(lbNumerojug);
         this.setBounds(Numerojug *30, 33, 20, 28); // need to fix here for adjustable player numbers
         totalPlayers++;
     }
-
-    int[] jugadorx01 = {31, 131, 231, 331, 431, 531,
-            531, 531, 531, 531, 531,
-            431, 331, 231, 131, 31,
-            31, 31, 31, 31};
-
-    int[] jugadory01 = {33, 33, 33, 33, 33, 33,
-            133, 233, 333, 433, 533,
-            533, 533, 533, 533, 533,
-            433, 333, 233, 133};
-
-    int[] jugadorx02 = {61, 191, 291, 361, 461, 561,
-            561, 561, 561, 561, 561,
-            461, 361, 261, 161, 61,
-            61, 61, 61, 61};
-
-    int[] jugadory02 = {33, 33, 33, 33, 33, 33,
-            133, 233, 333, 433, 533,
-            533, 533, 533, 533, 533,
-            433, 333, 233, 133};
 
 
     public ArrayList<Integer> getTituloPropiedades() {
@@ -164,16 +143,35 @@ public class Ficha extends JPanel
         super.paintComponent(g);
     }
 
+    int[] jugadorx01 = {31, 131, 231, 331, 431, 531,
+            531, 531, 531, 531, 531,
+            431, 331, 231, 131, 31,
+            31, 31, 31, 31};
 
-    public void moverse(int casillasAMoverse)
+    int[] jugadory01 = {33, 33, 33, 33, 33, 33,
+            133, 233, 333, 433, 533,
+            533, 533, 533, 533, 533,
+            433, 333, 233, 133};
+
+    int[] jugadorx02 = {61, 191, 291, 361, 461, 561,
+            561, 561, 561, 561, 561,
+            461, 361, 261, 161, 61,
+            61, 61, 61, 61};
+
+    int[] jugadory02 = {33, 33, 33, 33, 33, 33,
+            133, 233, 333, 433, 533,
+            533, 533, 533, 533, 533,
+            433, 333, 233, 133};
+
+    public void moverse(int dicesTotal)
     {
-        if (getPosicionDeCasilleroActual() + casillasAMoverse > 19) {
+        if (PosicionDeCasilleroActual + dicesTotal > 19) {
             depositarDinero(200);
-
-            int objetivo = (getPosicionDeCasilleroActual() + casillasAMoverse) % 20;
+        }
+            int objetivo = (PosicionDeCasilleroActual + dicesTotal) % 20;
             PosicionDeCasilleroActual= objetivo;
 
-            if (Memepolimein.juegoON == 1) {
+            if (Memepolimein.juegoON == 0) {
 
                 this.setLocation(jugadorx01[objetivo], jugadory01[objetivo]);
 
@@ -184,7 +182,6 @@ public class Ficha extends JPanel
 
             }
         }
-    }
 
     public void pagarCarcel(Ficha ficha)
     {

@@ -62,8 +62,10 @@ public class Cuadrantes extends JPanel {
             this.add(nombreLabel);
         } else {
 
-            nombreLabel = new JLabel(labelString) {
-                protected void paintComponent(Graphics g) {
+            nombreLabel = new JLabel(labelString)
+            {
+                protected void paintComponent(Graphics g)
+                {
                     Graphics2D g2 = (Graphics2D)g;
                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);
