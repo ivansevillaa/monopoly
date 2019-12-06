@@ -172,18 +172,18 @@ public class Tablero extends JPanel
         // Y asi con las demas
 
         //Seteo de los precios de las rentas
-        cuadro01.setRentPrecio(10);
-        cuadro03.setRentPrecio(15);
-        cuadro04.setRentPrecio(15);
+        cuadro01.setRentPrecio(100);
+        cuadro03.setRentPrecio(100);
+        cuadro04.setRentPrecio(120);
 
-        cuadro08.setRentPrecio(25);
-        cuadro09.setRentPrecio(25);
+        cuadro08.setRentPrecio(150);
+        cuadro09.setRentPrecio(160);
 
-        cuadro13.setRentPrecio(30);
-        cuadro14.setRentPrecio(25);
+        cuadro13.setRentPrecio(180);
+        cuadro14.setRentPrecio(190);
 
-        cuadro17.setRentPrecio(30);
-        cuadro19.setRentPrecio(35);
+        cuadro17.setRentPrecio(200);
+        cuadro19.setRentPrecio(200);
         // Y seguimos con cuadro 1 y 2 seteando
 
         // Aca creamos el tablero en si y dividimos las hileras para que quede de forma cuadrada
