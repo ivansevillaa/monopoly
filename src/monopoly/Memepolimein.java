@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Memepolimein extends JFrame
 {
+    
     private JPanel contentIncluder;
     static JTextArea infoConsole;
     static JTextArea infoPlayers;
@@ -19,6 +20,7 @@ public class Memepolimein extends JFrame
     JButton btnRollDadin;
     JButton btnPagarRnt;
     JButton btnComprar;
+    JButton btnManual;
     Tablero Tableroenjuego;
     static int juegoON = 0;
     ArrayList<Ficha> jugadorenae = new ArrayList<>();
@@ -28,6 +30,9 @@ public class Memepolimein extends JFrame
     Boolean Dadoparajugador01 = false;
     Boolean Dadoparajugador02 = false;
     JPanel testeador;
+	protected Component parentComponent;
+    
+    
 
 
     public Memepolimein()
@@ -74,6 +79,18 @@ public class Memepolimein extends JFrame
         jugador02 = new Ficha(2, Color.PINK);
         jugadorenae.add(jugador02);
         layeredPane.add(jugador02, new Integer(2));
+        
+        btnManual = new JButton("Manual");
+        btnManual.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent e){
+        		Manual manual = new Manual();
+        		JOptionPane.showMessageDialog(parentComponent, manual.toString());
+        	}
+        });
+
+        btnManual.setBounds(147, 100, 117, 29);
+        rightPanel.add(btnManual);
+        btnManual.setEnabled(true);
 
 
         btnComprar = new JButton("Comprar");
@@ -111,13 +128,13 @@ public class Memepolimein extends JFrame
 
                 // turnCounter--;
                 Ficha currentPlayer = jugadorenae.get(juegoON);
-                Ficha dueñoDelCuadrante = jugadorenae.get((Ficha.Filmina.get(currentPlayer.getPosicionDeCasilleroActual()))==1?0:1);
-                infoConsole.setText("pagaste al jugador "+dueñoDelCuadrante.getNumerojug());
+                Ficha duenioDelCuadrante = jugadorenae.get((Ficha.Filmina.get(currentPlayer.getPosicionDeCasilleroActual()))==1?0:1);
+                infoConsole.setText("pagaste al jugador "+duenioDelCuadrante.getNumerojug());
 
                 int withdrawAmount = Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getRentPrecio();
                 System.out.println(withdrawAmount);
                 currentPlayer.PagarDeuda(withdrawAmount);
-                dueñoDelCuadrante.PagarDeuda(withdrawAmount);
+                duenioDelCuadrante.PagarDeuda(withdrawAmount);
 
                 btnNextTurno.setEnabled(true);
                 btnPagarRnt.setEnabled(false);
