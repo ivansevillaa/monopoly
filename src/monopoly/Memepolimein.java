@@ -227,9 +227,9 @@ public class Memepolimein extends JFrame
 
                 btnRollDadin.setEnabled(false);
                 if (Dadoparajugador01 || Dadoparajugador02) {
-                    infoConsole.setText("Apreta siguiente turno para que el siguiente jugador inicie" + (juegoON == 0 ? 1 : 2) + " Tira el dado!");
+                    infoConsole.setText("Apreta siguiente turno para que el jugador " + (juegoON == 0 ? 1 : 2) + " tire el dado!");
                 } else {
-                    infoConsole.setText("Apreta siguiente turno para que el siguiente jugador inicie " + (juegoON == 0 ? 2 : 1) + " Tira el dado!");
+                    infoConsole.setText("Apreta siguiente turno para que el jugador " + (juegoON == 0 ? 2 : 1) + " tire el dado!");
                 }
 
 
@@ -273,7 +273,7 @@ public class Memepolimein extends JFrame
                 //cart.show(Paneldeljugador, "" + (juegoON == 0 ? 1 : 2));
                 //updatePanelPlayer1TextArea();
                 //updatePanelPlayer2TextArea();
-                infoConsole.setText("Ahora es "+(juegoON==0 ? 1 : 2)+" tomara su turno");
+                infoConsole.setText("Jugador "+(juegoON==0 ? 1 : 2)+" tomara su turno");
 
                 infoPlayers.setText("Jugador 1: "+jugador01.getDinero()+"\nJugador 2: "+jugador02.getDinero());
             }
