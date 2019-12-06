@@ -45,12 +45,12 @@ public class Memepolimein extends JFrame
         contentIncluder.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentIncluder);
         contentIncluder.setLayout(null);
-//Seteamos la ventana principal vendria a ser el cuadrado donde va a estar todo no sabria explicar (el panel eso es)xd
+//Seteamos la ventana principal
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBorder(new LineBorder(new Color(0, 0, 0)));
         layeredPane.setBounds(6, 6, 632, 630);
         contentIncluder.add(layeredPane);
-//Hacemos el tablerito en juego xdxd
+//Hacemos el tablerito del juego
         Tableroenjuego = new Tablero(6,6,612,612);
         Tableroenjuego.setBackground(new Color(51, 255, 153));
         layeredPane.add(Tableroenjuego, new Integer(0));
@@ -126,7 +126,6 @@ public class Memepolimein extends JFrame
             public void actionPerformed(ActionEvent e)
             {
 
-                // turnCounter--;
                 Ficha currentPlayer = jugadorenae.get(juegoON);
                 Ficha duenioDelCuadrante = jugadorenae.get((Ficha.Filmina.get(currentPlayer.getPosicionDeCasilleroActual()))==1?0:1);
                 infoConsole.setText("pagaste al jugador "+duenioDelCuadrante.getNumerojug());
@@ -185,6 +184,12 @@ public class Memepolimein extends JFrame
                         btnNextTurno.setEnabled(true);
                     }
                     else if (Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador01.getPosicionDeCasilleroActual()))) {
+                        if (Tableroenjuego.getAllCuadrantes().get(jugador01.getPosicionDeCasilleroActual()).getName().equals("FORTUNA")){
+                            Especiales.especiales.Fortuna(jugador01);
+                        }else if (Tableroenjuego.getAllCuadrantes().get(jugador01.getPosicionDeCasilleroActual()).getName().equals("CARCEL") || Tableroenjuego.getAllCuadrantes().get(jugador01.getPosicionDeCasilleroActual()).getName().equals("CARCEL 2.0") ){
+                            Especiales.especiales.Carcel(jugador01);
+
+                        }
                         btnComprar.setEnabled(false);
                         btnNextTurno.setEnabled(true);
                     } else if (!Ficha.Filmina.containsKey(jugador01.getPosicionDeCasilleroActual())) { // if not bought by someone
@@ -225,6 +230,12 @@ public class Memepolimein extends JFrame
                         btnNextTurno.setEnabled(true);
                     }
                     else if (Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()))) {
+                        if (Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()).getName().equals("FORTUNA")){
+                            Especiales.especiales.Fortuna(jugador02);
+                        }else if (Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()).getName().equals("CARCEL") || Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()).getName().equals("CARCEL 2.0") ){
+                            Especiales.especiales.Carcel(jugador02);
+
+                        }
                         btnComprar.setEnabled(false);
                         btnNextTurno.setEnabled(true);
                     } else if (!Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual())) { // si no esta comprado por alguien

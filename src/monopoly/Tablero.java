@@ -184,9 +184,8 @@ public class Tablero extends JPanel
 
         cuadro17.setRentPrecio(200);
         cuadro19.setRentPrecio(200);
-        // Y seguimos con cuadro 1 y 2 seteando
 
-        // Aca creamos el tablero en si y dividimos las hileras para que quede de forma cuadrada
+        // Aca creamos el tablero en si y dividimos las hileras para que quede de forma cuadrada.
         JLabel lblMonopoly = new JLabel("MEMEPOLY")
         {
 
@@ -205,7 +204,7 @@ public class Tablero extends JPanel
                 super.paintComponent(g);
             }
         };
-        // Aca implementamos los colorsitos y too el desastre
+        // Aca implementamos los colorsitos y too el desastre.
         lblMonopoly.setForeground(Color.WHITE);
         lblMonopoly.setBackground(Color.RED);
         lblMonopoly.setOpaque(true);
