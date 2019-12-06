@@ -21,8 +21,8 @@ public class Especiales{
 
 	}
 	public static void Carcel(Ficha jugador){
-		System.out.println("Pagaste fianza de 100 peso");
-		jugador.retirarDinero(100);
+		System.out.println("Pagaste fianza de 1000 peso");
+		jugador.retirarDinero(1000);
 	}
 
 

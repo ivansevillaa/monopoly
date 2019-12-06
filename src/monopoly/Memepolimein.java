@@ -275,12 +275,24 @@ public class Memepolimein extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-
-                btnRollDadin.setEnabled(true);
-                btnComprar.setEnabled(false);
-                btnPagarRnt.setEnabled(false);
-                btnNextTurno.setEnabled(false);
-
+                if (jugador02.getDinero()<=0){
+                    btnRollDadin.setEnabled(false);
+                    btnComprar.setEnabled(false);
+                    btnPagarRnt.setEnabled(false);
+                    btnNextTurno.setEnabled(false);
+                    System.out.println("Gano el jugador 1!");
+                }else if (jugador01.getDinero()<=0){
+                    btnRollDadin.setEnabled(false);
+                    btnComprar.setEnabled(false);
+                    btnPagarRnt.setEnabled(false);
+                    btnNextTurno.setEnabled(false);
+                    System.out.println("Gano el jugador 2!");
+                }else {
+                    btnRollDadin.setEnabled(true);
+                    btnComprar.setEnabled(false);
+                    btnPagarRnt.setEnabled(false);
+                    btnNextTurno.setEnabled(false);
+                }
                 if (juegoON == 0 && Dadoparajugador01) {
                     juegoON = 0;
                     Dadoparajugador01 = false;

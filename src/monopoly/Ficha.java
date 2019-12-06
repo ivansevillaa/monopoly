@@ -98,9 +98,10 @@ public class Ficha extends JPanel
     public void retirarDinero(int montoARetirar) {
         if(montoARetirar > dinero) {
             System.out.println("Jugador " + getNumerojug() + " está en bancarrota");
-        } else {
-            dinero -= montoARetirar;
         }
+
+            dinero -= montoARetirar;
+
     }
 
     public void depositarDinero(int montoADepositar) {
