@@ -184,7 +184,6 @@ public class Tablero extends JPanel
 
         cuadro17.setRentPrecio(30);
         cuadro19.setRentPrecio(35);
-        // Y seguimos con cuadro 1 y 2 seteando
 
         // Aca creamos el tablero en si y dividimos las hileras para que quede de forma cuadrada
         JLabel lblMonopoly = new JLabel("MEMEPOLY")

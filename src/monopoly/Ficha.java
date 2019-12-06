@@ -29,9 +29,6 @@ public class Ficha extends JPanel
         return titleDeeds;
     }
 
-    public int getdinero() {
-        return dinero;
-    }
 
     public void Retirardinero(int Retirarmonto) {
         if(Retirarmonto > dinero) {
@@ -165,6 +162,7 @@ public class Ficha extends JPanel
 
     public void moverse(int dicesTotal)
     {
+        System.out.println(this.getDinero());
         if (PosicionDeCasilleroActual + dicesTotal > 19) {
             depositarDinero(200);
         }
