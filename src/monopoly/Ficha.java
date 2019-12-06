@@ -18,12 +18,12 @@ public class Ficha extends JPanel
     private boolean turno;
     JLabel lbNumerojug;
     private int Numerojug;
-    static int totalPlayers = 0; // we might need this number later on
+    static int totalPlayers = 0;
 
 
-    private int PosicionDeCasilleroActual = 0; // where player is currently located on (0 - 19). initially zero
-    private ArrayList<Integer> titleDeeds = new ArrayList<Integer>(); // squares that the player has
-    private int dinero = 1500; // initial money
+    private int PosicionDeCasilleroActual = 0;
+    private ArrayList<Integer> titleDeeds = new ArrayList<Integer>();
+    private int dinero = 1500; // Dinero inicial
 
     public ArrayList<Integer> getTitleDeeds() {
         return titleDeeds;
@@ -36,7 +36,7 @@ public class Ficha extends JPanel
     public void Retirardinero(int Retirarmonto) {
         if(Retirarmonto > dinero) {
             setVisible(false);
-            System.out.println("Player "+ Numerojug + " went bankrupt!");
+            System.out.println("Player "+ Numerojug + "esta en banca rota!");
         } else {
             dinero -= Retirarmonto;
         }
@@ -44,7 +44,7 @@ public class Ficha extends JPanel
 
     public void depositardinero(int depositarmonto) {
         dinero += depositarmonto;
-        System.out.println("Payday for player "+ getNumerojug()+". You earned $200!");
+        System.out.println("dia de pago del jugador "+ getNumerojug()+". ganaste $200!");
     }
 
     public int getPosicionDeCasilleroActual() {
@@ -61,10 +61,10 @@ public class Ficha extends JPanel
 
     public void buyTitleDeed(int squareNumber) {
         if(Filmina.containsKey(squareNumber)) {
-            System.out.println("It's already bought by someone. You cannot by here.");
+            System.out.println("ya esta comprado");
         } else {
             titleDeeds.add(this.getPosicionDeCasilleroActual());
-            Filmina.put(squareNumber, this.getNumerojug()); // everytime a player buys a title deed, it is written in ledger, for example square 1 belongs to player 2
+            Filmina.put(squareNumber, this.getNumerojug()); // siempre que un jugador compra un title deed, se escribe en Filmina, por ejemplo cuadrante 1 pertenece a  player 2
 
         }
     }

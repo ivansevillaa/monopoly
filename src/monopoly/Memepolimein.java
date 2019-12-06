@@ -19,8 +19,6 @@ public class Memepolimein extends JFrame
     JButton btnRollDadin;
     JButton btnPagarRnt;
     JButton btnComprar;
-    /*  JTextArea panelPlayer1TextArea;
-      JTextArea panelPlayer2TextArea;*/
     Tablero Tableroenjuego;
     static int juegoON = 0;
     ArrayList<Ficha> jugadorenae = new ArrayList<>();
@@ -84,16 +82,14 @@ public class Memepolimein extends JFrame
 
             public void actionPerformed(ActionEvent e) {
 
-                //turnCounter--;
+                
                 Ficha currentPlayer = jugadorenae.get(juegoON);
                 infoConsole.setText("Has comprado "+Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getName());
                 currentPlayer.buyTitleDeed(currentPlayer.getPosicionDeCasilleroActual());
                 int Retirarmonto = Tableroenjuego.getAllCuadrantes().get(currentPlayer.getPosicionDeCasilleroActual()).getPrecio();
                 currentPlayer.Retirardinero(Retirarmonto);
                 btnComprar.setEnabled(false);
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
-                //turnCounter++;
+
                 infoPlayers.setText("Jugador 1: "+jugador01.getDinero()+"\nJugador 2: "+jugador02.getDinero());
             }
         });
@@ -125,11 +121,6 @@ public class Memepolimein extends JFrame
 
                 btnNextTurno.setEnabled(true);
                 btnPagarRnt.setEnabled(false);
-                //currentPlayer.withdrawFromWallet(withdrawAmount);
-                // updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
-                //turnCounter++;
-                //gameBoard.getAllSquares().get(player1.getCurrentSquareNumber()).setRentPaid(true);
                 infoPlayers.setText("Jugador 1: "+jugador01.getDinero()+"\nJugador 2: "+jugador02.getDinero());
             }
 
@@ -200,16 +191,16 @@ public class Memepolimein extends JFrame
                         Dadoparajugador02 = false;
                     }
                     jugador02.moverse(dicesTotal);
-                    if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
-                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) != jugador02.getNumerojug() // not by itself
+                    if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // si esta comprado por alguien
+                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) != jugador02.getNumerojug() // no por el mismo
                     ) {
                         btnComprar.setEnabled(false);
                         btnRollDadin.setEnabled(false);
                         btnNextTurno.setEnabled(false);
                         btnPagarRnt.setEnabled(true);
                     }
-                    if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // if bought by someone
-                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) == jugador02.getNumerojug()) { // and by itself
+                    if (Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual()) // si esta comprado por alguien
+                            && Ficha.Filmina.get(jugador02.getPosicionDeCasilleroActual()) == jugador02.getNumerojug()) { // no por el mismo
                         btnComprar.setEnabled(false);
                         btnPagarRnt.setEnabled(false);
 
@@ -217,7 +208,7 @@ public class Memepolimein extends JFrame
                     if (Tableroenjuego.getCuadrantesincomprables().contains(Tableroenjuego.getAllCuadrantes().get(jugador02.getPosicionDeCasilleroActual()))) {
                         btnComprar.setEnabled(false);
                         btnNextTurno.setEnabled(true);
-                    } else if (!Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual())) { // if not bought by someone
+                    } else if (!Ficha.Filmina.containsKey(jugador02.getPosicionDeCasilleroActual())) { // si no esta comprado por alguien
                         btnComprar.setEnabled(true);
                         btnNextTurno.setEnabled(true);
                         btnPagarRnt.setEnabled(false);
@@ -238,8 +229,6 @@ public class Memepolimein extends JFrame
                 layeredPane.add(Tableroenjuego, new Integer(0));
 
                 infoPlayers.setText("Jugador 1: "+jugador01.getDinero()+"\nJugador 2: "+jugador02.getDinero());
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
 
             }
         });
@@ -270,9 +259,7 @@ public class Memepolimein extends JFrame
                 }
 
 
-                //cart.show(Paneldeljugador, "" + (juegoON == 0 ? 1 : 2));
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
+
                 infoConsole.setText("Jugador "+(juegoON==0 ? 1 : 2)+" tomara su turno");
 
                 infoPlayers.setText("Jugador 1: "+jugador01.getDinero()+"\nJugador 2: "+jugador02.getDinero());
